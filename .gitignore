@@ -1,0 +1,13 @@
+*.dSYM
+*.swp
+*test*.c
+*.out
+.DS_Store
+.idea
+.*.c
+.vscode
+*.a
+*.o
+test/*
+Test/*
+so_long

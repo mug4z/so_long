@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: tfrily <tfrily@student.42.fr>              +#+  +:+       +#+         #
+#    By: marvin <marvin@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/06 14:51:20 by tfrily            #+#    #+#              #
-#    Updated: 2024/02/06 15:09:47 by tfrily           ###   ########.fr        #
+#    Updated: 2024/02/07 14:49:53 by marvin           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,13 +28,16 @@ LLDB = /usr/bin/lldb
 
 all: $(NAME)
 
+#$(CC) -Wall -Wextra -Werror -Imlx -c $< -o $@ FOR MAC
+#@$(CC) $(CFLAGS) -c $< -o $@
 %.o : %.c
-	@$(CC) $(CFLAGS) -c $< -o $@
+	$(CC) $(CFLAGS) -I/usr/include -Imlx_linux -O3 -c $< -o $@ # For LINUX
 
+#$(CC) $(OBJ) -Lmlx -lmlx -framework OpenGL -framework AppKit -o $(NAME) FOR MAC
 $(NAME): $(OBJ)
 	@echo "🚀 Building $(NAME)"
 	@$(MAKE) all -C $(LIBFTDIR)
-	@$(CC) $(CFLAGS)	$(OBJ) -o $@ -Llibft -lft
+	$(CC) $(OBJ) -o $@ -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -Llibft -lft #For LINUX
 	@echo "\033[32m 💎Compilation $(NAME) done💎"
 
 clean:
@@ -48,3 +51,5 @@ re: fclean all
 
 debug:
 	$(LLDB) $(NAME)
+#-Lmlx_linux -lmlx_linux -L/usr/lib -lmlx_linux -LXext -lX11 -lm -lz
+#$(CC) $(CFLAGS) -l/usr/include -lmlx_linux -O3 -c $< -o $@

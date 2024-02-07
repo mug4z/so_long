@@ -6,7 +6,7 @@
 #    By: marvin <marvin@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/06 14:51:20 by tfrily            #+#    #+#              #
-#    Updated: 2024/02/07 14:49:53 by marvin           ###   ########.fr        #
+#    Updated: 2024/02/07 15:08:04 by marvin           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,13 +31,13 @@ all: $(NAME)
 #$(CC) -Wall -Wextra -Werror -Imlx -c $< -o $@ FOR MAC
 #@$(CC) $(CFLAGS) -c $< -o $@
 %.o : %.c
-	$(CC) $(CFLAGS) -I/usr/include -Imlx_linux -O3 -c $< -o $@ # For LINUX
+	@$(CC) $(CFLAGS) -I/usr/include -Imlx_linux -O3 -c $< -o $@ # For LINUX
 
 #$(CC) $(OBJ) -Lmlx -lmlx -framework OpenGL -framework AppKit -o $(NAME) FOR MAC
 $(NAME): $(OBJ)
 	@echo "🚀 Building $(NAME)"
 	@$(MAKE) all -C $(LIBFTDIR)
-	$(CC) $(OBJ) -o $@ -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -Llibft -lft #For LINUX
+	@$(CC) $(OBJ) -o $@ -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -Llibft -lft #For LINUX
 	@echo "\033[32m 💎Compilation $(NAME) done💎"
 
 clean:

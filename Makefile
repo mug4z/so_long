@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: marvin <marvin@student.42.fr>              +#+  +:+       +#+         #
+#    By: tfrily <tfrily@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/06 14:51:20 by tfrily            #+#    #+#              #
-#    Updated: 2024/02/07 15:08:04 by marvin           ###   ########.fr        #
+#    Updated: 2024/02/08 10:24:58 by tfrily           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,6 +22,7 @@ CC = gcc
 CFLAGS = -Wall -Werror -Wextra #-g -fsanitize=address
 RM = /bin/rm -rf
 LIBFTDIR = libft
+MLXDIR = mlx
 LLDB = /usr/bin/lldb
 
 .PHONY: all clean fclean re bonus debug
@@ -29,20 +30,21 @@ LLDB = /usr/bin/lldb
 all: $(NAME)
 
 #$(CC) -Wall -Wextra -Werror -Imlx -c $< -o $@ FOR MAC
-#@$(CC) $(CFLAGS) -c $< -o $@
+#@$(CC) $(CFLAGS) -I/usr/include -Imlx_linux -O3 -c $< -o $@ # For LINUX
 %.o : %.c
-	@$(CC) $(CFLAGS) -I/usr/include -Imlx_linux -O3 -c $< -o $@ # For LINUX
-
-#$(CC) $(OBJ) -Lmlx -lmlx -framework OpenGL -framework AppKit -o $(NAME) FOR MAC
+	@$(CC) -Wall -Wextra -Werror -Imlx -c $< -o $@
+#@$(CC) $(OBJ) -o $@ -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -Llibft -lft #For LINUX
 $(NAME): $(OBJ)
 	@echo "🚀 Building $(NAME)"
 	@$(MAKE) all -C $(LIBFTDIR)
-	@$(CC) $(OBJ) -o $@ -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -Llibft -lft #For LINUX
+	@$(MAKE) all -C $(MLXDIR)
+	$(CC) $(OBJ) -Llibft -lft -Lmlx -lm -lmlx -framework OpenGL -framework AppKit -o $@ # FOR MAC	
 	@echo "\033[32m 💎Compilation $(NAME) done💎"
 
 clean:
 	 @$(RM) $(wildcard $(OBJ))
 	 @$(MAKE) clean -C $(LIBFTDIR)
+	 @$(MAKE) clean -C $(MLXDIR)
 fclean: clean
 	@$(RM) $(NAME)
 	@$(RM) $(LIBFILE)
@@ -51,5 +53,3 @@ re: fclean all
 
 debug:
 	$(LLDB) $(NAME)
-#-Lmlx_linux -lmlx_linux -L/usr/lib -lmlx_linux -LXext -lX11 -lm -lz
-#$(CC) $(CFLAGS) -l/usr/include -lmlx_linux -O3 -c $< -o $@

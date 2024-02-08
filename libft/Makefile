@@ -6,7 +6,7 @@
 #    By: tfrily <tfrily@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/10 13:19:16 by tfrily            #+#    #+#              #
-#    Updated: 2024/02/06 15:09:01 by tfrily           ###   ########.fr        #
+#    Updated: 2024/02/08 17:40:26 by tfrily           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,7 @@ LIBPATH = .
 LIBFILE = libft.a
 OBJDIR = object
 CC = gcc
-CFLAGS = -Wall -Werror -Wextra #-g
+CFLAGS = -Wall -Werror -Wextra -g
 RM = /bin/rm -rf
 
 GREEN = "\033[32m"

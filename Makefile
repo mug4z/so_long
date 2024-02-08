@@ -6,11 +6,11 @@
 #    By: tfrily <tfrily@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/06 14:51:20 by tfrily            #+#    #+#              #
-#    Updated: 2024/02/08 10:24:58 by tfrily           ###   ########.fr        #
+#    Updated: 2024/02/08 18:17:38 by tfrily           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRC = src/main.c
+SRC = src/main.c src/checker.c src/errors.c src/map_parser_utils.c
 OBJ = $(patsubst %.c,%.o,$(SRC))
 
 NAME = so_long
@@ -19,7 +19,7 @@ LIBPATH = .
 LIBFILE = libft.a
 
 CC = gcc
-CFLAGS = -Wall -Werror -Wextra #-g -fsanitize=address
+CFLAGS = -Wall -Werror -Wextra -g #-fsanitize=address
 RM = /bin/rm -rf
 LIBFTDIR = libft
 MLXDIR = mlx
@@ -32,7 +32,7 @@ all: $(NAME)
 #$(CC) -Wall -Wextra -Werror -Imlx -c $< -o $@ FOR MAC
 #@$(CC) $(CFLAGS) -I/usr/include -Imlx_linux -O3 -c $< -o $@ # For LINUX
 %.o : %.c
-	@$(CC) -Wall -Wextra -Werror -Imlx -c $< -o $@
+	@$(CC) $(CFLAGS) -Imlx -c $< -o $@
 #@$(CC) $(OBJ) -o $@ -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -Llibft -lft #For LINUX
 $(NAME): $(OBJ)
 	@echo "🚀 Building $(NAME)"

@@ -6,7 +6,7 @@
 /*   By: tfrily <tfrily@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 14:53:55 by tfrily            #+#    #+#             */
-/*   Updated: 2024/02/09 10:50:49 by tfrily           ###   ########.fr       */
+/*   Updated: 2024/02/09 11:52:13 by tfrily           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,12 @@
 #include <stdio.h>
 
 // faire une tab char ** qui contient la map
+typedef struct s_map
+{
+	char	**map;
+}			t_map;
+
+//char	wrong_element;
 typedef struct s_data
 {
 	int		map_fd;
@@ -32,6 +38,7 @@ int		ft_chk_map_ext(t_data *data);
 void 	ft_checker(t_data *data);
 int		ft_chkdirectory(char *path_file);
 int		ft_chkfdvalid(char *path_file);
+void	ft_chkelements(char *line);
 
 // Parser
 void	ft_parser(t_data *data);
@@ -39,5 +46,7 @@ void	ft_parser(t_data *data);
 //Errors
 void	ft_err_ext(t_data *data);
 void	ft_err_directory(t_data *data);
+void	ft_err_filevalid(t_data *data);
+void	ft_err_elements(char c, char *line);
 
 #endif

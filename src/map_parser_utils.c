@@ -6,7 +6,7 @@
 /*   By: tfrily <tfrily@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 16:20:06 by tfrily            #+#    #+#             */
-/*   Updated: 2024/02/09 10:53:53 by tfrily           ###   ########.fr       */
+/*   Updated: 2024/02/09 11:38:47 by tfrily           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,9 @@ void	ft_opener(t_data *data)
 	}
 	else if (ft_chkfdvalid(data->map_name) == -2)
 	{
-		perror(data->map_name);
-		ft_clean((char *)data);
+		ft_err_filevalid(data);
 		exit(1);
 	}
 	else
-		open(data->map_name,O_RDONLY);
+		data->map_fd = open(data->map_name,O_RDONLY);
 }

@@ -6,7 +6,7 @@
 /*   By: tfrily <tfrily@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 16:29:01 by tfrily            #+#    #+#             */
-/*   Updated: 2024/02/09 11:15:08 by tfrily           ###   ########.fr       */
+/*   Updated: 2024/02/09 11:52:17 by tfrily           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,34 @@ int ft_chkfdvalid(char *path_file)
 	if (open(path_file, O_RDONLY) > 0)
 		return (0);
 	return (-2);
+}
+
+/**
+ * @brief Check if the line contain accepted elements 
+ * 
+ * @param line 
+ */
+// Les elements autorisés
+	// 0 -> sols
+	// 1 -> murs
+	// C -> element a collecter
+	// E -> pour la sortie
+	// P -> position de départ du personnage.
+void ft_chkelements(char *line)
+{
+	int x;
+	
+	x = 0;
+	while(line[x])
+	{
+		if(line[x] != '0' || line[x] != '1' || line[x] != 'C' 
+		   || line[x] != 'E' || line[x] != 'P' || line[x] != '\n')
+		{
+			ft_err_elements(line[x],line);
+		}
+	 x++;
+	}
+	ft_clean(line);
 }
 
 /**

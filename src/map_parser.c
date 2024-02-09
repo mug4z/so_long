@@ -6,7 +6,7 @@
 /*   By: tfrily <tfrily@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 16:12:01 by tfrily            #+#    #+#             */
-/*   Updated: 2024/02/09 10:43:48 by tfrily           ###   ########.fr       */
+/*   Updated: 2024/02/09 11:51:48 by tfrily           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,18 +25,33 @@
 	// C -> element a collecter
 	// E -> pour la sortie
 	// P -> position de départ du personnage.
-
-
-// int ft_elemtents(int fd)
-// {
 	
-// }
+// Check if map line too long str len on line if not the same size of the first one = ERROR
+
+/**
+ * @brief Check that only correct elements are on the map
+ * 
+ * @param fd 
+ * @return int 
+ */
+int ft_elements(int fd)
+{
+	char *res;
+	
+	res = get_next_line(fd);
+	while(res != NULL)
+	{
+		res = get_next_line(fd);
+	}
+	return (0);
+}
 
 void ft_parser(t_data *data)
 {
-	char *res;
 	// ouvrir le fichier
-	ft_opener(data);
 	//Verifier que l'ouverture c'est bien passer.
-	res = get_next_line(data->map_fd);
+	ft_opener(data);
+	// Check que la map ne soit pas vide.
+	
+	ft_elements(data->map_fd);
 }

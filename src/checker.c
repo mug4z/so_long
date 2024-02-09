@@ -6,12 +6,11 @@
 /*   By: tfrily <tfrily@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 16:29:01 by tfrily            #+#    #+#             */
-/*   Updated: 2024/02/09 10:51:18 by tfrily           ###   ########.fr       */
+/*   Updated: 2024/02/09 11:15:08 by tfrily           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
-// Check that the map name is correct
 
 /**
  * @brief Check if the extension of the given map is .ber
@@ -33,6 +32,12 @@ int ft_chk_map_ext(t_data *data)
 	return (-2);
 }
 
+/**
+ * @brief Check if the file is a directory
+ * 
+ * @param path_file 
+ * @return int -2 if it is a directory, 0 if it's not a directory
+ */
 int	ft_chkdirectory(char *path_file)
 {
 	if (open(path_file, O_DIRECTORY) > 0)
@@ -40,6 +45,12 @@ int	ft_chkdirectory(char *path_file)
 	return (0);
 }
 
+/**
+ * @brief check if the opening of the file is possible in read onlz
+ * 
+ * @param path_file 
+ * @return int  -2 if NOK and 0 if ok
+ */
 int ft_chkfdvalid(char *path_file)
 {
 	if (open(path_file, O_RDONLY) > 0)
@@ -48,7 +59,7 @@ int ft_chkfdvalid(char *path_file)
 }
 
 /**
- * @brief Checker
+ * @brief Checker.
  * 
  * @param data 
  */

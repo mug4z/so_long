@@ -6,7 +6,7 @@
 /*   By: tfrily <tfrily@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 11:17:33 by tfrily            #+#    #+#             */
-/*   Updated: 2023/11/28 16:28:41 by tfrily           ###   ########.fr       */
+/*   Updated: 2024/02/09 10:37:45 by tfrily           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ char	*ft_strchr_gnl(char *s, int c, char **cfound)
 	return (NULL);
 }
 
-void	*ft_memcpy(void *dst, const void *src, size_t n)
+void	*ft_memcpy_gnl(void *dst, const void *src, size_t n)
 {
 	size_t	x;
 	char	*cdst;
@@ -80,8 +80,8 @@ void	*ft_strjoin_gnl(char *s1, char *s2)
 	if (newchar == NULL)
 		return (NULL);
 	newchar[lens1 + lens2] = '\0';
-	ft_memcpy(newchar, s1, lens1);
-	ft_memcpy(&newchar[lens1], s2, lens2);
+	ft_memcpy_gnl(newchar, s1, lens1);
+	ft_memcpy_gnl(&newchar[lens1], s2, lens2);
 	free(s1);
 	return (newchar);
 }

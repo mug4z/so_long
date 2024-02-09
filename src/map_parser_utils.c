@@ -6,7 +6,7 @@
 /*   By: tfrily <tfrily@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 16:20:06 by tfrily            #+#    #+#             */
-/*   Updated: 2024/02/09 14:52:19 by tfrily           ###   ########.fr       */
+/*   Updated: 2024/02/09 15:37:19 by tfrily           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,4 +38,9 @@ void ft_remove_new_line(char *line)
 		if (line[len-1] == '\n')
 			line[len-1] = '\0';
 	}
+}
+
+int ft_map_line_count(char *lin)
+{
+	
 }

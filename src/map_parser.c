@@ -6,7 +6,7 @@
 /*   By: tfrily <tfrily@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 16:12:01 by tfrily            #+#    #+#             */
-/*   Updated: 2024/02/09 11:51:48 by tfrily           ###   ########.fr       */
+/*   Updated: 2024/02/09 14:54:17 by tfrily           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,24 +34,35 @@
  * @param fd 
  * @return int 
  */
-int ft_elements(int fd)
+void ft_elements(t_data *data)
 {
 	char *res;
 	
-	res = get_next_line(fd);
+	res = get_next_line(data->map_fd);
+	if(res == NULL)
+	{
+		ft_err_empty_map(data);
+		exit(1);
+	}
+	ft_remove_new_line(res);
 	while(res != NULL)
 	{
-		res = get_next_line(fd);
+		if(res[0] == '\0')
+		{
+			ft_err_invalid_map(data);
+			exit(1);
+		}
+		ft_chk_elements_line(res);
+		res = get_next_line(data->map_fd);
+		ft_remove_new_line(res);
 	}
-	return (0);
 }
 
 void ft_parser(t_data *data)
 {
 	// ouvrir le fichier
-	//Verifier que l'ouverture c'est bien passer.
+	// Verifier que l'ouverture c'est bien passer.
 	ft_opener(data);
 	// Check que la map ne soit pas vide.
-	
-	ft_elements(data->map_fd);
+	ft_elements(data);
 }

@@ -6,7 +6,7 @@
 /*   By: tfrily <tfrily@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 16:29:01 by tfrily            #+#    #+#             */
-/*   Updated: 2024/02/09 11:52:17 by tfrily           ###   ########.fr       */
+/*   Updated: 2024/02/09 14:41:54 by tfrily           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,23 +63,18 @@ int ft_chkfdvalid(char *path_file)
  * 
  * @param line 
  */
-// Les elements autorisés
-	// 0 -> sols
-	// 1 -> murs
-	// C -> element a collecter
-	// E -> pour la sortie
-	// P -> position de départ du personnage.
-void ft_chkelements(char *line)
+void ft_chk_elements_line(char *line)
 {
 	int x;
 	
 	x = 0;
 	while(line[x])
 	{
-		if(line[x] != '0' || line[x] != '1' || line[x] != 'C' 
-		   || line[x] != 'E' || line[x] != 'P' || line[x] != '\n')
+		if(line[x] != '0' && line[x] != '1' && line[x] != 'C' 
+		   && line[x] != 'E' && line[x] != 'P')
 		{
 			ft_err_elements(line[x],line);
+			exit(1);
 		}
 	 x++;
 	}

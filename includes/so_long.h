@@ -6,7 +6,7 @@
 /*   By: tfrily <tfrily@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 14:53:55 by tfrily            #+#    #+#             */
-/*   Updated: 2024/02/09 11:52:13 by tfrily           ###   ########.fr       */
+/*   Updated: 2024/02/09 14:47:42 by tfrily           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,17 +28,18 @@ typedef struct s_data
 {
 	int		map_fd;
 	char 	*map_name;
-}		t_data;
+}			   t_data;
 
 // map_parser_utils
 void	ft_opener(t_data *data);
+void 	ft_remove_new_line(char *line);
 
 // checker
 int		ft_chk_map_ext(t_data *data);
 void 	ft_checker(t_data *data);
 int		ft_chkdirectory(char *path_file);
 int		ft_chkfdvalid(char *path_file);
-void	ft_chkelements(char *line);
+void	ft_chk_elements_line(char *line);
 
 // Parser
 void	ft_parser(t_data *data);
@@ -48,5 +49,7 @@ void	ft_err_ext(t_data *data);
 void	ft_err_directory(t_data *data);
 void	ft_err_filevalid(t_data *data);
 void	ft_err_elements(char c, char *line);
+void	ft_err_empty_map(t_data *data);
+void 	ft_err_invalid_map(t_data *data);
 
 #endif

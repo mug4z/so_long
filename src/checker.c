@@ -6,7 +6,7 @@
 /*   By: tfrily <tfrily@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 16:29:01 by tfrily            #+#    #+#             */
-/*   Updated: 2024/02/08 18:38:05 by tfrily           ###   ########.fr       */
+/*   Updated: 2024/02/09 10:51:18 by tfrily           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,21 @@ int ft_chk_map_ext(t_data *data)
 		return (1);
 	return (-2);
 }
+
+int	ft_chkdirectory(char *path_file)
+{
+	if (open(path_file, O_DIRECTORY) > 0)
+			return (-2);
+	return (0);
+}
+
+int ft_chkfdvalid(char *path_file)
+{
+	if (open(path_file, O_RDONLY) > 0)
+		return (0);
+	return (-2);
+}
+
 /**
  * @brief Checker
  * 
@@ -47,4 +62,5 @@ void ft_checker(t_data *data)
 		ft_err_ext(data);
 		exit(1);
 	}
+	ft_parser(data);
 }

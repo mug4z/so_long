@@ -6,7 +6,7 @@
 /*   By: tfrily <tfrily@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 14:53:33 by tfrily            #+#    #+#             */
-/*   Updated: 2024/02/08 18:41:31 by tfrily           ###   ########.fr       */
+/*   Updated: 2024/02/09 10:31:19 by tfrily           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,10 @@ int main(int argc, char **argv)
     }
     data = ft_calloc(1,sizeof(t_data));
     data->map_name = argv[1];
+    data->map_fd = -1;
     // Checker
     ft_checker(data);
     // Opener in parser_utils
-    ft_opener(data);
     // Parser
     // After the map is well checked go render
 

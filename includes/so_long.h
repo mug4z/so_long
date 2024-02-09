@@ -6,7 +6,7 @@
 /*   By: tfrily <tfrily@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 14:53:55 by tfrily            #+#    #+#             */
-/*   Updated: 2024/02/08 18:39:40 by tfrily           ###   ########.fr       */
+/*   Updated: 2024/02/09 10:50:49 by tfrily           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,9 @@
 
 #include "../libft/libft.h"
 #include "../mlx_linux/mlx.h"
+#include <stdio.h>
+
+// faire une tab char ** qui contient la map
 typedef struct s_data
 {
 	int		map_fd;
@@ -27,8 +30,14 @@ void	ft_opener(t_data *data);
 // checker
 int		ft_chk_map_ext(t_data *data);
 void 	ft_checker(t_data *data);
+int		ft_chkdirectory(char *path_file);
+int		ft_chkfdvalid(char *path_file);
+
+// Parser
+void	ft_parser(t_data *data);
 
 //Errors
 void	ft_err_ext(t_data *data);
+void	ft_err_directory(t_data *data);
 
 #endif

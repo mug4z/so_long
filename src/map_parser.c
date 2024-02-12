@@ -6,7 +6,7 @@
 /*   By: tfrily <tfrily@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 16:12:01 by tfrily            #+#    #+#             */
-/*   Updated: 2024/02/12 10:47:29 by tfrily           ###   ########.fr       */
+/*   Updated: 2024/02/12 12:46:37 by tfrily           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,20 +28,18 @@
 	
 // Check if map line too long str len on line if not the same size of the first one = ERROR
 
-// Check if the map is rectangle
-
-t_map  *ft_filltable(t_data *data)
+t_map	*ft_filltable(t_data *data)
 {
 	t_map	*map;
 	char	*line;
 	int		x;
 	
 	x = 0;
-	map = ft_calloc(1,sizeof(t_map));
+	map = ft_calloc(1, sizeof(t_map));
 	if(map == NULL)
 		return (NULL);
 	map->lines = ft_map_line_count(data);
-	map->map =  ft_calloc(map->lines+1,sizeof(char **));
+	map->map =  ft_calloc(map->lines+1, sizeof(char **));
 	if (map->map == NULL)
 		return (NULL);
 	ft_opener(data);
@@ -63,4 +61,10 @@ void ft_parser(t_data *data)
 	ft_chk_elements(data);
 	data->map =  ft_filltable(data);
 	// FROM THIS POINT WHEN EXIT for ERROR DON'T FORGET TO FREE THE MAP AND THE DATA
+	if (data->map != NULL)
+	{
+		ft_chk_rect(data);
+	}
+		
+		
 }

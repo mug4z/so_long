@@ -6,7 +6,7 @@
 /*   By: tfrily <tfrily@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 17:59:21 by tfrily            #+#    #+#             */
-/*   Updated: 2024/02/09 13:18:24 by tfrily           ###   ########.fr       */
+/*   Updated: 2024/02/12 11:59:30 by tfrily           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void ft_err_filevalid(t_data *data)
 void ft_err_elements(char c, char *line)
 {
 	ft_putstr_fd("Error\n",2);
-	ft_putstr_fd(&c,2);
+	ft_putchar_fd(c,2);
 	ft_putstr_fd(": wrong elements",2);
 	ft_clean(line);
 }

@@ -6,7 +6,7 @@
 /*   By: tfrily <tfrily@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 14:53:33 by tfrily            #+#    #+#             */
-/*   Updated: 2024/02/12 10:46:30 by tfrily           ###   ########.fr       */
+/*   Updated: 2024/02/12 11:34:37 by tfrily           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ int main(int argc, char **argv)
       return (1);
     }
     data = ft_calloc(1,sizeof(t_data));
+    if (data == NULL)
+      return (1);
     data->map_name = argv[1];
     data->map_fd = -1;
     // Checker

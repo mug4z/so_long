@@ -6,7 +6,7 @@
 /*   By: tfrily <tfrily@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 16:12:01 by tfrily            #+#    #+#             */
-/*   Updated: 2024/02/09 15:38:48 by tfrily           ###   ########.fr       */
+/*   Updated: 2024/02/12 10:47:29 by tfrily           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,22 +27,40 @@
 	// P -> position de départ du personnage.
 	
 // Check if map line too long str len on line if not the same size of the first one = ERROR
+
+// Check if the map is rectangle
+
 t_map  *ft_filltable(t_data *data)
 {
-	// t_map *map;
+	t_map	*map;
+	char	*line;
+	int		x;
 	
+	x = 0;
+	map = ft_calloc(1,sizeof(t_map));
+	if(map == NULL)
+		return (NULL);
+	map->lines = ft_map_line_count(data);
+	map->map =  ft_calloc(map->lines+1,sizeof(char **));
+	if (map->map == NULL)
+		return (NULL);
 	ft_opener(data);
-	// line counter
-	// Allocation memoire de mon table a 2d
-	// While gnl pour remplir mes cellule + remove les \n
-	
-	
-	// map = ft_calloc(1,sizeof(t_map));
-	// map->map = ft_calloc(3,sizeof(char **));
+	line = get_next_line(data->map_fd);
+	ft_remove_new_line(line);
+	while(line != NULL)
+	{
+		map->map[x++] = line;
+		line = get_next_line(data->map_fd);
+		ft_remove_new_line(line);
+	}
+	close(data->map_fd);
+	return (map);
 }
 
 void ft_parser(t_data *data)
 {
 	ft_opener(data);
 	ft_chk_elements(data);
+	data->map =  ft_filltable(data);
+	// FROM THIS POINT WHEN EXIT for ERROR DON'T FORGET TO FREE THE MAP AND THE DATA
 }

@@ -6,7 +6,7 @@
 /*   By: tfrily <tfrily@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 14:53:33 by tfrily            #+#    #+#             */
-/*   Updated: 2024/02/09 10:31:19 by tfrily           ###   ########.fr       */
+/*   Updated: 2024/02/12 10:46:30 by tfrily           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,11 @@ int main(int argc, char **argv)
     // Opener in parser_utils
     // Parser
     // After the map is well checked go render
+    
+    ft_clean2dtable(data->map->map);
+    ft_clean((char *)data->map);
+    ft_clean((char *)data);
+    
 
 	return (0);
 }

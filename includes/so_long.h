@@ -6,7 +6,7 @@
 /*   By: tfrily <tfrily@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 14:53:55 by tfrily            #+#    #+#             */
-/*   Updated: 2024/02/09 15:22:07 by tfrily           ###   ########.fr       */
+/*   Updated: 2024/02/12 10:18:04 by tfrily           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 typedef struct s_map
 {
 	char	**map;
+	int		lines;
 }			t_map;
 
 //char	wrong_element;
@@ -45,8 +46,9 @@ void	ft_chk_elements_line(char *line);
 // checker_utils
 void	ft_chk_elements(t_data *data);
 
-// Parser
+// Map Parser
 void	ft_parser(t_data *data);
+int		ft_map_line_count(t_data *data);
 
 //Errors
 void	ft_err_ext(t_data *data);

@@ -6,7 +6,7 @@
 /*   By: tfrily <tfrily@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 16:12:01 by tfrily            #+#    #+#             */
-/*   Updated: 2024/02/12 12:46:37 by tfrily           ###   ########.fr       */
+/*   Updated: 2024/02/12 13:34:10 by tfrily           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ void ft_parser(t_data *data)
 	if (data->map != NULL)
 	{
 		ft_chk_rect(data);
+		ft_chk_surround_wall(data);
 	}
 		
 		

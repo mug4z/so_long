@@ -6,7 +6,7 @@
 /*   By: tfrily <tfrily@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 15:04:41 by tfrily            #+#    #+#             */
-/*   Updated: 2024/02/12 12:46:19 by tfrily           ###   ########.fr       */
+/*   Updated: 2024/02/12 13:37:14 by tfrily           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,11 @@ void ft_chk_elements(t_data *data)
 	close(data->map_fd);
 }
 
-// Check if the map is rectangle
+/**
+ * @brief Check if the map is rectangular
+ * 
+ * @param data Struct that contain information about the map
+ */
 void ft_chk_rect(t_data *data)
 {
 	int col;
@@ -64,10 +68,32 @@ void ft_chk_rect(t_data *data)
 	}
 }
 
-// Chek if the map is surrounded by 1.
-void ft_chk_surround_wall()
+void ft_chk_surround_wall(t_data *data)
 {
-	
+	int 	x;
+
+	x = 0;
+	while(data->map->map[0][x] && data->map->map[data->map->lines - 1][x])
+	{
+		if (data->map->map[0][x] != '1' || 
+			data->map->map[data->map->lines - 1][x] != '1')
+		{
+			ft_err_surrounded_wall(data);
+			exit(1);
+		}
+		x++;
+	}
+	x = 1;
+	while(data->map->map[x])
+	{
+		if(data->map->map[x][0] != '1' || 
+		   data->map->map[x][ft_strlen(data->map->map[x]) - 1] != '1')
+		{
+			ft_err_surrounded_wall(data);
+			exit(1);
+		}
+		x++;
+	}
 }
 
 // Check if the map contain the min required elements to finish.

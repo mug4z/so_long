@@ -6,7 +6,7 @@
 /*   By: tfrily <tfrily@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 14:53:55 by tfrily            #+#    #+#             */
-/*   Updated: 2024/02/12 12:46:49 by tfrily           ###   ########.fr       */
+/*   Updated: 2024/02/12 13:35:10 by tfrily           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ void	ft_err_elements(char c, char *line);
 void	ft_err_empty_map(t_data *data);
 void 	ft_err_invalid_map(t_data *data);
 void	ft_err_not_rectangular(t_data *data);
-void	ft_chk_surround_wall();
+void 	ft_chk_surround_wall(t_data *data);
+void 	ft_err_surrounded_wall(t_data *data);
 
 #endif

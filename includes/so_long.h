@@ -6,7 +6,7 @@
 /*   By: tfrily <tfrily@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 14:53:55 by tfrily            #+#    #+#             */
-/*   Updated: 2024/02/12 13:35:10 by tfrily           ###   ########.fr       */
+/*   Updated: 2024/02/12 15:41:17 by tfrily           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,9 @@ void	ft_chk_elements_line(char *line);
 // checker_utils
 void	ft_chk_elements(t_data *data);
 void 	ft_chk_rect(t_data *data);
+void 	ft_chk_surround_wall(t_data *data);
+void 	ft_chk_min_elements(t_data *data);
+int		ft_count_elements(char **map, char element);
 
 // Map Parser
 void	ft_parser(t_data *data);
@@ -61,5 +64,8 @@ void 	ft_err_invalid_map(t_data *data);
 void	ft_err_not_rectangular(t_data *data);
 void 	ft_chk_surround_wall(t_data *data);
 void 	ft_err_surrounded_wall(t_data *data);
+void	ft_err_not_engough_item(t_data *data);
+void	ft_err_exit(t_data *data);
+void 	ft_err_player(t_data *data);
 
 #endif

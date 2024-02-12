@@ -6,7 +6,7 @@
 /*   By: tfrily <tfrily@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 16:20:06 by tfrily            #+#    #+#             */
-/*   Updated: 2024/02/12 11:40:56 by tfrily           ###   ########.fr       */
+/*   Updated: 2024/02/12 15:20:30 by tfrily           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,4 +56,27 @@ int ft_map_line_count(t_data *data)
 	}
 	close(data->map_fd);
 	return (x);
+}
+
+int ft_count_elements(char **map, char element)
+{
+	int x;
+	int y;
+	int res;
+	
+	x = 0;
+	y = 0;
+	res = 0;
+	while(map[x])
+	{
+		y = 0;
+		while(map[x][y])
+		{
+			if(map[x][y] == element)
+				res++;
+			y++;
+		}
+		x++;
+	}
+	return (res);
 }

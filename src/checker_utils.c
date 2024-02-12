@@ -6,7 +6,7 @@
 /*   By: tfrily <tfrily@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 15:04:41 by tfrily            #+#    #+#             */
-/*   Updated: 2024/02/12 13:37:14 by tfrily           ###   ########.fr       */
+/*   Updated: 2024/02/12 15:41:36 by tfrily           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,11 @@ void ft_chk_rect(t_data *data)
 	}
 }
 
+/**
+ * @brief Check if the map is well close by walls
+ * 
+ * @param data 
+ */
 void ft_chk_surround_wall(t_data *data)
 {
 	int 	x;
@@ -97,3 +102,36 @@ void ft_chk_surround_wall(t_data *data)
 }
 
 // Check if the map contain the min required elements to finish.
+// max 1 E
+// min 1 C
+// max 1 P
+/**
+ * @brief 
+ * 
+ * @param data 
+ */
+void ft_chk_min_elements(t_data *data)
+{
+	int x;
+	int y;
+	
+	x = 0;
+	y = 0;
+
+	if (ft_count_elements(data->map->map, 'C') < 1)
+	{
+		ft_err_not_engough_item(data);
+		exit(1);			
+	}
+	if(ft_count_elements(data->map->map, 'E') != 1)
+	{
+		ft_err_exit(data);
+		exit(1);
+	}
+	if(ft_count_elements(data->map->map, 'P') != 1)
+	{
+		ft_err_player(data);
+		exit(1);
+	}
+}
+

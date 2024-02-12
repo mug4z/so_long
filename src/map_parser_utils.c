@@ -6,7 +6,7 @@
 /*   By: tfrily <tfrily@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 16:20:06 by tfrily            #+#    #+#             */
-/*   Updated: 2024/02/12 15:20:30 by tfrily           ###   ########.fr       */
+/*   Updated: 2024/02/12 16:58:42 by tfrily           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,4 +79,23 @@ int ft_count_elements(char **map, char element)
 		x++;
 	}
 	return (res);
+}
+
+// FlOOD FILL a faire en recursive.
+// LOGIC: Visiter en x+1 x-1 et y+1 y-1
+	// Changer Si une case est differente de 1.
+	// Si eguale a 1 alors return
+
+void ft_floodfill(int x, int y,t_map *map)
+{
+	if (map->map[x][y] == '1' || (size_t) y >= ft_strlen(map->map[x]) 
+		|| y < 0 || x < 0 || x >= map->lines)
+		return ;
+		
+	map->map[x][y] = '1';
+	ft_floodfill(x,y + 1,map);
+	ft_floodfill(x,y - 1,map);
+	ft_floodfill(x + 1,y,map);
+	ft_floodfill(x - 1,y,map);
+	
 }

@@ -6,7 +6,7 @@
 /*   By: tfrily <tfrily@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 14:53:55 by tfrily            #+#    #+#             */
-/*   Updated: 2024/02/12 15:41:17 by tfrily           ###   ########.fr       */
+/*   Updated: 2024/02/12 16:43:34 by tfrily           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ int		ft_count_elements(char **map, char element);
 // Map Parser
 void	ft_parser(t_data *data);
 int		ft_map_line_count(t_data *data);
+void	ft_floodfill(int x, int y,t_map *map);
 
 //Errors
 void	ft_err_ext(t_data *data);

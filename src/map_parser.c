@@ -6,7 +6,7 @@
 /*   By: tfrily <tfrily@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 16:12:01 by tfrily            #+#    #+#             */
-/*   Updated: 2024/02/12 14:05:00 by tfrily           ###   ########.fr       */
+/*   Updated: 2024/02/12 16:44:17 by tfrily           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,5 +66,6 @@ void ft_parser(t_data *data)
 		ft_chk_rect(data);
 		ft_chk_surround_wall(data);
 		ft_chk_min_elements(data);
+		ft_floodfill(0,0,data->map);
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: tfrily <tfrily@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 15:04:41 by tfrily            #+#    #+#             */
-/*   Updated: 2024/02/12 15:41:36 by tfrily           ###   ########.fr       */
+/*   Updated: 2024/02/12 16:13:25 by tfrily           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,12 +101,8 @@ void ft_chk_surround_wall(t_data *data)
 	}
 }
 
-// Check if the map contain the min required elements to finish.
-// max 1 E
-// min 1 C
-// max 1 P
 /**
- * @brief 
+ * @brief Check if the required elements are 
  * 
  * @param data 
  */

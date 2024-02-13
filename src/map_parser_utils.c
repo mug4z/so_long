@@ -6,7 +6,7 @@
 /*   By: tfrily <tfrily@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 16:20:06 by tfrily            #+#    #+#             */
-/*   Updated: 2024/02/13 10:36:06 by tfrily           ###   ########.fr       */
+/*   Updated: 2024/02/13 13:10:46 by tfrily           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,11 +91,9 @@ void ft_floodfill(int x, int y,t_map *map)
 	if ( map->map[x][y] == '1' || (size_t) y >= ft_strlen(map->map[x])
 		|| y < 0 || x < 0 || x >= map->lines)
 		return ;
-		
 	map->map[x][y] = '1';
 	ft_floodfill(x,y + 1,map);
 	ft_floodfill(x,y - 1,map);
 	ft_floodfill(x + 1,y,map);
 	ft_floodfill(x - 1,y,map);
-	
 }

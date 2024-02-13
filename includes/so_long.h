@@ -6,7 +6,7 @@
 /*   By: tfrily <tfrily@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 14:53:55 by tfrily            #+#    #+#             */
-/*   Updated: 2024/02/12 16:43:34 by tfrily           ###   ########.fr       */
+/*   Updated: 2024/02/13 13:13:01 by tfrily           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,13 +49,15 @@ void 	ft_chk_rect(t_data *data);
 void 	ft_chk_surround_wall(t_data *data);
 void 	ft_chk_min_elements(t_data *data);
 int		ft_count_elements(char **map, char element);
-
+void 	ft_chk_map_validity(int p_position[2],t_data *data);
 // Map Parser
 void	ft_parser(t_data *data);
+t_map	*ft_filltable(t_data *data);
 int		ft_map_line_count(t_data *data);
 void	ft_floodfill(int x, int y,t_map *map);
 
 //Errors
+void 	ft_print_err(t_data *data, char *msg);
 void	ft_err_ext(t_data *data);
 void	ft_err_directory(t_data *data);
 void	ft_err_filevalid(t_data *data);

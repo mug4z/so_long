@@ -6,7 +6,7 @@
 /*   By: tfrily <tfrily@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 15:04:41 by tfrily            #+#    #+#             */
-/*   Updated: 2024/02/13 11:43:16 by tfrily           ###   ########.fr       */
+/*   Updated: 2024/02/13 13:22:06 by tfrily           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,3 +130,15 @@ void ft_chk_min_elements(t_data *data)
 		exit(1);
 	}
 }
+
+void ft_chk_map_validity(int p_position[2],t_data *data)
+{
+	ft_floodfill(p_position[0],p_position[1],data->map);
+	if(ft_count_elements(data->map->map, 'C') != 0 || ft_count_elements(data->map->map,'E') != 0)
+	{
+		ft_print_err(data,": is impossible to complete");
+		exit(1);
+	}
+	
+}
+

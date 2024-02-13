@@ -6,7 +6,7 @@
 /*   By: tfrily <tfrily@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 13:39:45 by tfrily            #+#    #+#             */
-/*   Updated: 2024/02/13 18:19:45 by tfrily           ###   ########.fr       */
+/*   Updated: 2024/02/13 18:25:22 by tfrily           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void ft_render_grass(t_data *data)
 {
 	mlx_put_image_to_window(data->mlx, data->window, data->img_grass, 0,0);
 	mlx_put_image_to_window(data->mlx, data->window, data->img_tree, 0,0);
-	mlx_put_image_to_window(data->mlx, data->window, data->img_grass, 0,40);
+	mlx_put_image_to_window(data->mlx, data->window, data->img_grass, 40,0);
 	mlx_put_image_to_window(data->mlx, data->window, data->img_collec, 0,40*2);
 	mlx_put_image_to_window(data->mlx, data->window, data->img_character, 0,40);
 }

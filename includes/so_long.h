@@ -6,7 +6,7 @@
 /*   By: tfrily <tfrily@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 14:53:55 by tfrily            #+#    #+#             */
-/*   Updated: 2024/02/13 13:13:01 by tfrily           ###   ########.fr       */
+/*   Updated: 2024/02/13 15:23:09 by tfrily           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,14 @@ typedef struct s_data
 	int		map_fd;
 	char 	*map_name;
 	t_map	*map;
+	void	*mlx;
+	void	*window;
+	void	*img_grass;
+	void	*img_tree;
+	void	*img_collec;
+	void	*img_character;
+	int		img_withd;
+	int		img_height;
 }			   t_data;
 
 // map_parser_utils
@@ -70,5 +78,9 @@ void 	ft_err_surrounded_wall(t_data *data);
 void	ft_err_not_engough_item(t_data *data);
 void	ft_err_exit(t_data *data);
 void 	ft_err_player(t_data *data);
+
+// Renders
+void ft_render(t_data *data);
+
 
 #endif

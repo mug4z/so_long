@@ -6,7 +6,7 @@
 /*   By: tfrily <tfrily@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 16:20:06 by tfrily            #+#    #+#             */
-/*   Updated: 2024/02/12 16:58:42 by tfrily           ###   ########.fr       */
+/*   Updated: 2024/02/13 10:36:06 by tfrily           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ int ft_count_elements(char **map, char element)
 
 void ft_floodfill(int x, int y,t_map *map)
 {
-	if (map->map[x][y] == '1' || (size_t) y >= ft_strlen(map->map[x]) 
+	if ( map->map[x][y] == '1' || (size_t) y >= ft_strlen(map->map[x])
 		|| y < 0 || x < 0 || x >= map->lines)
 		return ;
 		

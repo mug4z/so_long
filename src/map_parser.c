@@ -6,7 +6,7 @@
 /*   By: tfrily <tfrily@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 16:12:01 by tfrily            #+#    #+#             */
-/*   Updated: 2024/02/12 16:44:17 by tfrily           ###   ########.fr       */
+/*   Updated: 2024/02/13 11:43:20 by tfrily           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,9 +54,38 @@ t_map	*ft_filltable(t_data *data)
 	close(data->map_fd);
 	return (map);
 }
+int *ft_P_position(t_data *data)
+{
+	int x;
+	int y;
+	static int res[2];
+
+	y = 0;
+	x = 0;
+	while(data->map->map[x])
+	{
+		y = 0;
+		while(data->map->map[x][y])
+		{
+			if(data->map->map[x][y] == 'P')
+			{
+				res[0] = x;
+				res[1] = y;
+				return (res);
+			}
+			y++;
+		}
+		x++;
+	}
+	res[0] = x;
+	res[1] = y;
+	return (res);
+}
 
 void ft_parser(t_data *data)
 {
+	int *p_position;
+
 	ft_opener(data);
 	ft_chk_elements(data);
 	data->map =  ft_filltable(data);
@@ -66,6 +95,9 @@ void ft_parser(t_data *data)
 		ft_chk_rect(data);
 		ft_chk_surround_wall(data);
 		ft_chk_min_elements(data);
-		ft_floodfill(0,0,data->map);
+		// commencer a P
+		p_position = ft_P_position(data);
+		ft_floodfill(p_position[0],p_position[1],data->map);
+		
 	}
 }

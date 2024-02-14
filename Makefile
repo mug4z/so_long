@@ -3,15 +3,15 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: tfrily <tfrily@student.42.fr>              +#+  +:+       +#+         #
+#    By: marvin <marvin@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/06 14:51:20 by tfrily            #+#    #+#              #
-#    Updated: 2024/02/13 14:01:23 by tfrily           ###   ########.fr        #
+#    Updated: 2024/02/14 11:43:47 by marvin           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SRC = src/main.c src/checker.c src/errors.c src/errors_utils.c src/map_parser.c  src/map_parser_utils.c \
-	  src/checker_utils.c src/error_utils1.c src/render.c
+	  src/checker_utils.c src/error_utils1.c src/render.c src/controls.c
 OBJ = $(patsubst %.c,%.o,$(SRC))
 
 NAME = so_long
@@ -33,19 +33,19 @@ all: $(NAME)
 #$(CC) -Wall -Wextra -Werror -Imlx -c $< -o $@ FOR MAC
 #@$(CC) $(CFLAGS) -I/usr/include -Imlx_linux -O3 -c $< -o $@ # For LINUX
 %.o : %.c
-	@$(CC) $(CFLAGS) -Imlx -c $< -o $@
+	@$(CC) $(CFLAGS) -I/usr/include -Imlx_linux -O3 -c $< -o $@ # For LINUX
 #@$(CC) $(OBJ) -o $@ -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -Llibft -lft #For LINUX
 $(NAME): $(OBJ)
 	@echo "🚀 Building $(NAME)"
 	@$(MAKE) all -C $(LIBFTDIR)
-	@$(MAKE) all -C $(MLXDIR)
-	$(CC) $(OBJ) -Llibft -lft -Lmlx -lm -lmlx -framework OpenGL -framework AppKit -o $@ # FOR MAC	
+ 	#@$(MAKE) all -C $(MLXDIR) # FOR MAC
+	@$(CC) $(OBJ) -o $@ -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -Llibft -lft #For LINUX
 	@echo "\033[32m 💎Compilation $(NAME) done💎"
 
 clean:
 	 @$(RM) $(wildcard $(OBJ))
 	 @$(MAKE) clean -C $(LIBFTDIR)
-	 @$(MAKE) clean -C $(MLXDIR)
+	 #@$(MAKE) clean -C $(MLXDIR)
 fclean: clean
 	@$(RM) $(NAME)
 	@$(RM) $(LIBFILE)

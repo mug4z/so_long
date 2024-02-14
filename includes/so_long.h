@@ -3,19 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tfrily <tfrily@student.42.fr>              +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 14:53:55 by tfrily            #+#    #+#             */
-/*   Updated: 2024/02/13 15:23:09 by tfrily           ###   ########.fr       */
+/*   Updated: 2024/02/14 16:35:18 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-#include "../libft/libft.h"
-#include "../mlx_linux/mlx.h"
-#include <stdio.h>
+# include "../libft/libft.h"
+# include "../mlx_linux/mlx.h"
+# include <stdio.h>
+# define l_esc 65307
+# define l_w	119
+# define l_a    97
+# define l_s    115
+# define l_d    100
 
 // faire une tab char ** qui contient la map
 typedef struct s_map
@@ -35,6 +40,7 @@ typedef struct s_data
 	void	*img_grass;
 	void	*img_tree;
 	void	*img_collec;
+	void	*img_exit;
 	void	*img_character;
 	int		img_withd;
 	int		img_height;
@@ -58,6 +64,7 @@ void 	ft_chk_surround_wall(t_data *data);
 void 	ft_chk_min_elements(t_data *data);
 int		ft_count_elements(char **map, char element);
 void 	ft_chk_map_validity(int p_position[2],t_data *data);
+
 // Map Parser
 void	ft_parser(t_data *data);
 t_map	*ft_filltable(t_data *data);
@@ -66,6 +73,7 @@ void	ft_floodfill(int x, int y,t_map *map);
 
 //Errors
 void 	ft_print_err(t_data *data, char *msg);
+void 	ft_print_error(char *what, char *msg, t_data *data);
 void	ft_err_ext(t_data *data);
 void	ft_err_directory(t_data *data);
 void	ft_err_filevalid(t_data *data);
@@ -81,6 +89,9 @@ void 	ft_err_player(t_data *data);
 
 // Renders
 void ft_render(t_data *data);
+
+// Controls
+int ft_close(int keycode, t_data *data);
 
 
 #endif

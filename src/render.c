@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 13:39:45 by tfrily            #+#    #+#             */
-/*   Updated: 2024/02/14 11:03:23 by marvin           ###   ########.fr       */
+/*   Updated: 2024/02/14 16:41:12 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,46 +53,42 @@ void ft_render_item(t_data *data, void *img, char c)
 		x++;
 	}
 }
-void ft_img_to_struct(t_data *data)
-{
-	char *grass;
-	char *tree;
-	char *collec;
-	char *character;
-	char *exit;
-	// Faire
 
-	grass = "./ressources/decor/xpm/Grass.xpm";
-	tree  = "./ressources/decor/xpm/big_tree.xpm";
-	collec = "./ressources/decor/xpm/collectible2.xpm";
-	character = "./ressources/decor/xpm/character.xpm";
-	exit = "./ressources/decor/xpm/exit.xpm";
-	data->img_grass = mlx_xpm_file_to_image(data->mlx, grass,
-					  &data->img_withd, &data->img_withd);
-	data->img_tree  = mlx_xpm_file_to_image(data->mlx, tree,
-					 &data->img_withd, &data->img_withd);
-	data->img_collec  = mlx_xpm_file_to_image(data->mlx, collec,
-					 &data->img_withd, &data->img_withd);
-	data->img_character  = mlx_xpm_file_to_image(data->mlx, character,
-						  &data->img_withd, &data->img_withd);
-	data->img_exit  = mlx_xpm_file_to_image(data->mlx, exit,
-						  &data->img_withd, &data->img_withd);
+void ft_img_to_struct(t_data *data, char *file, void *img_ptr)
+{
+	char *path;
+
+	path = file;
+	if (open(file,O_RDONLY) < 0)
+	{
+		close(data->map_fd);
+		ft_print_error(path,": file don't exist",data);
+		exit(1);
+	}
+	img_ptr = mlx_xpm_file_to_image(data->mlx, path, &data->img_withd,
+								&data->img_withd);
+	if(img_ptr == NULL)
+	{
+		close(data->map_fd);
+		ft_print_error(path,": couldn't load the image",data);
+		exit(1);
+	}
 }
 
 void ft_render(t_data *data)
 {
-	ft_opener(data);
-	ft_filltable(data);
-	data->mlx = mlx_init();
-	data->window = mlx_new_window(data->mlx,ft_strlen(data->map->map[0]) * 40,
-			  				(data->map->lines * 40) , "so_long");
-	ft_img_to_struct(data);
+	ft_img_to_struct(data,"./ressources/decor/xpm/Grass.xpm",data->img_grass);
+	ft_img_to_struct(data,"./ressources/decor/xpm/big_tree.xpm",data->img_tree);
+	ft_img_to_struct(data,"./ressources/decor/xpm/collectible2.xpm",data->img_collec);
+	ft_img_to_struct(data,"./ressources/decor/xpm/exit.xpm",data->img_exit);
+	ft_img_to_struct(data,"./ressources/decor/xpm/character.xpm",data->img_character);
 	ft_render_grass(data);
 	ft_render_item(data,data->img_tree,'1');
 	ft_render_item(data,data->img_character,'P');
 	ft_render_item(data,data->img_collec,'C');
 	ft_render_item(data,data->img_exit,'E');
-	mlx_loop(data->mlx);
+	mlx_key_hook(data->window,ft_close,&data);
+	//mlx_hook(data->window,2,1L<<0,ft_close,&data);
 }
 //   void *mlx;
 //   void *mlx_win;

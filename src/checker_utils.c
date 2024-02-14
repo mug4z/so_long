@@ -108,12 +108,6 @@ void ft_chk_surround_wall(t_data *data)
  */
 void ft_chk_min_elements(t_data *data)
 {
-	int x;
-	int y;
-	
-	x = 0;
-	y = 0;
-
 	if (ft_count_elements(data->map->map, 'C') < 1)
 	{
 		ft_err_not_engough_item(data);

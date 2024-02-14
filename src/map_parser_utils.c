@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_parser_utils.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tfrily <tfrily@student.42.fr>              +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 16:20:06 by tfrily            #+#    #+#             */
-/*   Updated: 2024/02/13 13:10:46 by tfrily           ###   ########.fr       */
+/*   Updated: 2024/02/14 10:25:00 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	ft_opener(t_data *data)
 void ft_remove_new_line(char *line)
 {
 	int len;
-	
+
 	if(line != NULL)
 	{
 		len = ft_strlen(line);
@@ -44,7 +44,7 @@ int ft_map_line_count(t_data *data)
 {
 	char *res;
 	int  x;
-	
+
 	x = 0;
 	ft_opener(data);
 	res = get_next_line(data->map_fd);
@@ -63,7 +63,7 @@ int ft_count_elements(char **map, char element)
 	int x;
 	int y;
 	int res;
-	
+
 	x = 0;
 	y = 0;
 	res = 0;

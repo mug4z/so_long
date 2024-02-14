@@ -3,43 +3,79 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tfrily <tfrily@student.42.fr>              +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 13:39:45 by tfrily            #+#    #+#             */
-/*   Updated: 2024/02/13 18:25:22 by tfrily           ###   ########.fr       */
+/*   Updated: 2024/02/14 11:03:23 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
+// render grass -> OK
+// render tree  -> OK
+// render collectible -> OK
+// render exit ->
+// render character -> OK
 void ft_render_grass(t_data *data)
 {
-	mlx_put_image_to_window(data->mlx, data->window, data->img_grass, 0,0);
-	mlx_put_image_to_window(data->mlx, data->window, data->img_tree, 0,0);
-	mlx_put_image_to_window(data->mlx, data->window, data->img_grass, 40,0);
-	mlx_put_image_to_window(data->mlx, data->window, data->img_collec, 0,40*2);
-	mlx_put_image_to_window(data->mlx, data->window, data->img_character, 0,40);
+	int x;
+	int y;
+
+	x = 0;
+	while(data->map->map[x])
+	{
+		y = 0;
+		while (data->map->map[x][y])
+		{
+			mlx_put_image_to_window(data->mlx, data->window, data->img_grass, y*40,x*40);
+			y++;
+		}
+		x++;
+	}
 }
 
+void ft_render_item(t_data *data, void *img, char c)
+{
+	int x;
+	int y;
+
+	x = 0;
+	while(data->map->map[x])
+	{
+		y = 0;
+		while (data->map->map[x][y])
+		{
+			if (data->map->map[x][y] == c)
+				mlx_put_image_to_window(data->mlx, data->window,img, y*40,x*40);
+			y++;
+		}
+		x++;
+	}
+}
 void ft_img_to_struct(t_data *data)
 {
 	char *grass;
-	char *tree;  
+	char *tree;
 	char *collec;
 	char *character;
-	// Faire 
-	
+	char *exit;
+	// Faire
+
 	grass = "./ressources/decor/xpm/Grass.xpm";
 	tree  = "./ressources/decor/xpm/big_tree.xpm";
 	collec = "./ressources/decor/xpm/collectible2.xpm";
 	character = "./ressources/decor/xpm/character.xpm";
-	data->img_grass = mlx_xpm_file_to_image(data->mlx, grass, 
+	exit = "./ressources/decor/xpm/exit.xpm";
+	data->img_grass = mlx_xpm_file_to_image(data->mlx, grass,
 					  &data->img_withd, &data->img_withd);
-	data->img_tree  = mlx_xpm_file_to_image(data->mlx, tree, 
+	data->img_tree  = mlx_xpm_file_to_image(data->mlx, tree,
 					 &data->img_withd, &data->img_withd);
-	data->img_collec  = mlx_xpm_file_to_image(data->mlx, collec, 
+	data->img_collec  = mlx_xpm_file_to_image(data->mlx, collec,
 					 &data->img_withd, &data->img_withd);
 	data->img_character  = mlx_xpm_file_to_image(data->mlx, character,
+						  &data->img_withd, &data->img_withd);
+	data->img_exit  = mlx_xpm_file_to_image(data->mlx, exit,
 						  &data->img_withd, &data->img_withd);
 }
 
@@ -52,6 +88,10 @@ void ft_render(t_data *data)
 			  				(data->map->lines * 40) , "so_long");
 	ft_img_to_struct(data);
 	ft_render_grass(data);
+	ft_render_item(data,data->img_tree,'1');
+	ft_render_item(data,data->img_character,'P');
+	ft_render_item(data,data->img_collec,'C');
+	ft_render_item(data,data->img_exit,'E');
 	mlx_loop(data->mlx);
 }
 //   void *mlx;
@@ -63,7 +103,7 @@ void ft_render(t_data *data)
 //   void *img_grass;
 //   `
 //   char *relative_path_grass = "./ressources/decor/xpm/Grass.xpm";
-  
+
 
 //   ft_printf("HELLO WORLD\n");
 //  //int acc = access(relative_path,F_OK);

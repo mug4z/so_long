@@ -6,7 +6,7 @@
 /*   By: tfrily <tfrily@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 15:04:41 by tfrily            #+#    #+#             */
-/*   Updated: 2024/02/13 13:22:06 by tfrily           ###   ########.fr       */
+/*   Updated: 2024/02/15 10:07:59 by tfrily           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,7 +132,6 @@ void ft_chk_map_validity(int p_position[2],t_data *data)
 	{
 		ft_print_err(data,": is impossible to complete");
 		exit(1);
-	}
-	
+	}	
 }
 

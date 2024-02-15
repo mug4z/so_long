@@ -6,7 +6,7 @@
 /*   By: tfrily <tfrily@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 16:12:01 by tfrily            #+#    #+#             */
-/*   Updated: 2024/02/13 13:31:10 by tfrily           ###   ########.fr       */
+/*   Updated: 2024/02/15 11:46:51 by tfrily           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,8 @@ void ft_parser(t_data *data)
 		ft_chk_surround_wall(data);
 		ft_chk_min_elements(data);
 		p_position = ft_P_position(data);
+		data->p_x_pos = p_position[0];
+		data->p_x_pos = p_position[1];
 		ft_chk_map_validity(p_position,data);
 	}
 	ft_clean2dtable(data->map->map);

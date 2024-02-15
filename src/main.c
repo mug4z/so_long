@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: tfrily <tfrily@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 14:53:33 by tfrily            #+#    #+#             */
-/*   Updated: 2024/02/14 14:18:53 by marvin           ###   ########.fr       */
+/*   Updated: 2024/02/15 11:26:20 by tfrily           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ int main(int argc, char **argv)
     data->window = mlx_new_window(data->mlx,ft_strlen(data->map->map[0]) * 40,
 			  				(data->map->lines * 40) , "so_long");
     ft_render(data);
+    ft_controls(data);
     mlx_loop(data->mlx);
     ft_clean((char *)data->map);
     ft_clean((char *)data);

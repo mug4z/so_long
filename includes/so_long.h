@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: tfrily <tfrily@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 14:53:55 by tfrily            #+#    #+#             */
-/*   Updated: 2024/02/14 16:35:18 by marvin           ###   ########.fr       */
+/*   Updated: 2024/02/15 11:46:28 by tfrily           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,16 @@
 # include "../libft/libft.h"
 # include "../mlx_linux/mlx.h"
 # include <stdio.h>
-# define l_esc 65307
-# define l_w	119
-# define l_a    97
-# define l_s    115
-# define l_d    100
+// # define l_esc 65307
+// # define l_w	119
+// # define l_a    97
+// # define l_s    115
+// # define l_d    100
+# define l_esc  53
+# define l_w	13
+# define l_a    0
+# define l_s    1
+# define l_d    2
 
 // faire une tab char ** qui contient la map
 typedef struct s_map
@@ -42,6 +47,8 @@ typedef struct s_data
 	void	*img_collec;
 	void	*img_exit;
 	void	*img_character;
+	int		p_x_pos;
+	int		p_y_pos;
 	int		img_withd;
 	int		img_height;
 }			   t_data;
@@ -91,7 +98,8 @@ void 	ft_err_player(t_data *data);
 void ft_render(t_data *data);
 
 // Controls
-int ft_close(int keycode, t_data *data);
+int ft_keypress(int keycode, t_data *data);
+int ft_controls(t_data *data);
 
 
 #endif

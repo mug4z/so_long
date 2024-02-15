@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: marvin <marvin@student.42.fr>              +#+  +:+       +#+         #
+#    By: tfrily <tfrily@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/06 14:51:20 by tfrily            #+#    #+#              #
-#    Updated: 2024/02/14 11:43:47 by marvin           ###   ########.fr        #
+#    Updated: 2024/02/15 10:11:49 by tfrily           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,16 +30,17 @@ LLDB = /usr/bin/lldb
 
 all: $(NAME)
 
-#$(CC) -Wall -Wextra -Werror -Imlx -c $< -o $@ FOR MAC
+#
+#@$(CC) $(CFLAGS) -I/usr/include -Imlx_linux -O3 -c $< -o $@ # For LINUX
 #@$(CC) $(CFLAGS) -I/usr/include -Imlx_linux -O3 -c $< -o $@ # For LINUX
 %.o : %.c
-	@$(CC) $(CFLAGS) -I/usr/include -Imlx_linux -O3 -c $< -o $@ # For LINUX
+	@$(CC) $(CFLAGS) -Imlx -c $< -o $@ # FOR MAC
 #@$(CC) $(OBJ) -o $@ -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -Llibft -lft #For LINUX
 $(NAME): $(OBJ)
 	@echo "🚀 Building $(NAME)"
 	@$(MAKE) all -C $(LIBFTDIR)
- 	#@$(MAKE) all -C $(MLXDIR) # FOR MAC
-	@$(CC) $(OBJ) -o $@ -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -Llibft -lft #For LINUX
+	@$(MAKE) all -C $(MLXDIR) # FOR MAC
+	@$(CC) $(OBJ)  -Llibft -lft -Lmlx -lm -lmlx -framework OpenGL -framework AppKit -o $@ # FOR MAC
 	@echo "\033[32m 💎Compilation $(NAME) done💎"
 
 clean:

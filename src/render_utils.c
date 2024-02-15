@@ -1,35 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_clean2dtable.c                                  :+:      :+:    :+:   */
+/*   render_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tfrily <tfrily@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/06 10:29:06 by tfrily            #+#    #+#             */
-/*   Updated: 2024/02/15 14:16:14 by tfrily           ###   ########.fr       */
+/*   Created: 2024/02/15 16:55:44 by tfrily            #+#    #+#             */
+/*   Updated: 2024/02/15 16:57:00 by tfrily           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../includes/so_long.h"
 
-/**
- * @brief Free all the element of a 2d array.
- *
- * @param ptr The 2d table
- * @return int 0
- */
-int	ft_clean2dtable(char **ptr)
+void ft_render_player(t_data *data, void *img)
 {
-	int	x;
+	int x;
+	int y;
 
 	x = 0;
-	while (ptr[x])
+	while(data->map->map[x])
 	{
-		free (ptr[x]);
-		ptr[x] = NULL;
+		y = 0;
+		while (data->map->map[x][y])
+		{
+			if (data->map->map[x][y] == 'P')
+				mlx_put_image_to_window(data->mlx, data->window,img, y*40-5,x*40-7);
+			y++;
+		}
 		x++;
 	}
-	free (ptr);
-	ptr = NULL;
-	return (0);
 }

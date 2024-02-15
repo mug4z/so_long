@@ -6,7 +6,7 @@
 /*   By: tfrily <tfrily@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 14:53:33 by tfrily            #+#    #+#             */
-/*   Updated: 2024/02/15 11:26:20 by tfrily           ###   ########.fr       */
+/*   Updated: 2024/02/15 16:21:57 by tfrily           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,16 +36,15 @@ int main(int argc, char **argv)
       return (1);
     data->map_name = argv[1];
     data->map_fd = -1;
-    ft_checker(data);
-    ft_opener(data);
-	  ft_filltable(data);
+    ft_checker(data); 
+	  data->map = ft_filltable(data); // ---- Leaks ok at this point
     data->mlx = mlx_init();
     data->window = mlx_new_window(data->mlx,ft_strlen(data->map->map[0]) * 40,
-			  				(data->map->lines * 40) , "so_long");
+		 	  				(data->map->lines * 40) , "so_long");
+    data->step_count = 0;
     ft_render(data);
     ft_controls(data);
-    mlx_loop(data->mlx);
-    ft_clean((char *)data->map);
-    ft_clean((char *)data);
+    mlx_loop(data->mlx);    
 	return (0);
 }
+// Pas besoin de free mlx

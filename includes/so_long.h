@@ -6,7 +6,7 @@
 /*   By: tfrily <tfrily@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 14:53:55 by tfrily            #+#    #+#             */
-/*   Updated: 2024/02/15 11:46:28 by tfrily           ###   ########.fr       */
+/*   Updated: 2024/02/15 16:44:32 by tfrily           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define SO_LONG_H
 
 # include "../libft/libft.h"
-# include "../mlx_linux/mlx.h"
+# include "../mlx/mlx.h"
 # include <stdio.h>
 // # define l_esc 65307
 // # define l_w	119
@@ -51,6 +51,7 @@ typedef struct s_data
 	int		p_y_pos;
 	int		img_withd;
 	int		img_height;
+	int		step_count;
 }			   t_data;
 
 // map_parser_utils
@@ -96,10 +97,19 @@ void 	ft_err_player(t_data *data);
 
 // Renders
 void ft_render(t_data *data);
+void ft_render_map(t_data *data);
 
 // Controls
 int ft_keypress(int keycode, t_data *data);
 int ft_controls(t_data *data);
+
+//Controls utils
+int ft_up(t_data *data);
+int ft_down(t_data *data);
+int ft_right(t_data *data);
+int ft_left(t_data *data);
+//quit
+void ft_quit(t_data *data);
 
 
 #endif

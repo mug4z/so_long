@@ -24,6 +24,7 @@ int ft_process_move(t_data *data, int x, int y)
         data->map->map[data->p_x_pos][data->p_y_pos] = 'P';
         ft_render_map(data);
     }
+    return(0);
 }
 
 int ft_keypress(int keycode, t_data *data)

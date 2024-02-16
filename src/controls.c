@@ -13,43 +13,78 @@
 #include "../includes/so_long.h"
 
 
-// Faire une fonction cell valid !!!
-// process_move
-int ft_process_move(t_data *data, int x, int y)
+int ft_process_up_down(t_data *data, int x)
 {
-    if( data->map->map[data->p_x_pos+x][data->p_y_pos+y] != '1')
+    if(data->map->map[data->p_x_pos+x][data->p_y_pos] != '1')
     {
-        data->map->map[data->p_x_pos][data->p_y_pos] = '0';
-        data->p_x_pos -= x;
-        data->map->map[data->p_x_pos][data->p_y_pos] = 'P';
-        ft_render_map(data);
+        if(data->map->map[data->p_x_pos+x][data->p_y_pos] == 'C')
+        {
+            ft_move(data,x,1);
+            data->collec_count--;
+        }
+        else if(data->map->map[data->p_x_pos+x][data->p_y_pos] == 'E' 
+                && data->collec_count == 0)
+            ft_quit(data,"Congrats you beat the game !!!!");
+        else if(data->map->map[data->p_x_pos + x][data->p_y_pos] == 'E')
+        {
+            data->e_x_pos = data->p_x_pos + x;
+            data->e_y_pos = data->p_y_pos;
+            ft_move(data,x,1);
+        }   
+        else
+            ft_move(data,x,1);   
+    }
+    return(0);
+}
+
+int ft_process_left_right(t_data *data, int y)
+{
+    if( data->map->map[data->p_x_pos][data->p_y_pos+y] != '1')
+    {
+        if(data->map->map[data->p_x_pos][data->p_y_pos+y] == 'C')
+        {
+            ft_move(data,y,0);
+            data->collec_count--;
+        }
+        else if(data->map->map[data->p_x_pos][data->p_y_pos+y] == 'E' 
+                && data->collec_count == 0)
+            ft_quit(data,"Congrats you beat the game !!!!");
+        else if(data->map->map[data->p_x_pos][data->p_y_pos+y] == 'E')
+        {
+            data->e_x_pos = data->p_x_pos;
+            data->e_y_pos = data->p_y_pos + y;
+            ft_move(data,y,0);
+        }
+        else
+        {
+            ft_move(data,y,0);
+        }
     }
     return(0);
 }
 
 int ft_keypress(int keycode, t_data *data)
 {
-    ft_printf("%d\n",keycode);
     if (keycode == l_esc)
     {
         mlx_destroy_window(data->mlx,data->window);
-        ft_quit(data);
+        ft_quit(data,"Bye\n");
     }
     if(keycode == l_w)
-        ft_up(data);
+        ft_process_up_down(data, -1);
     if(keycode == l_a)
-        ft_left(data);
+        ft_process_left_right(data, -1);
     if(keycode == l_s)
-        ft_down(data);
+        ft_process_up_down(data, 1);
     if(keycode == l_d)
-        ft_right(data);
+        ft_process_left_right(data, 1);
    return(0);
 }
 
 int ft_buttonquit(t_data *data)
 {
     mlx_destroy_window(data->mlx,data->window);
-    ft_quit(data);
+    ft_quit(data,"Bye\n");
     return (0);
 }
 

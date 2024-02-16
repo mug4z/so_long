@@ -6,7 +6,7 @@
 /*   By: tfrily <tfrily@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 14:53:55 by tfrily            #+#    #+#             */
-/*   Updated: 2024/02/15 18:06:28 by tfrily           ###   ########.fr       */
+/*   Updated: 2024/02/16 14:25:04 by tfrily           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,8 @@ typedef struct s_data
 	void	*img_character;
 	int		p_x_pos;
 	int		p_y_pos;
+	int		e_x_pos;
+	int		e_y_pos;
 	int		img_withd;
 	int		img_height;
 	int		step_count;
@@ -103,15 +105,12 @@ void ft_render_map(t_data *data);
 // Controls
 int ft_keypress(int keycode, t_data *data);
 int ft_controls(t_data *data);
-int ft_process_move(t_data *data, int x, int y);
+int ft_process_up_down(t_data *data, int x);
+int ft_process_left_right(t_data *data, int y);
 
-//Controls utils
-int ft_up(t_data *data);
-int ft_down(t_data *data);
-int ft_right(t_data *data);
-int ft_left(t_data *data);
+// Controls utils
+void ft_move(t_data *data, int nb, int direction);
 //quit
-void ft_quit(t_data *data);
-
+void ft_quit(t_data *data, char *msg);
 
 #endif

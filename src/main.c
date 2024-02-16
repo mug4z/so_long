@@ -6,7 +6,7 @@
 /*   By: tfrily <tfrily@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 14:53:33 by tfrily            #+#    #+#             */
-/*   Updated: 2024/02/15 18:24:42 by tfrily           ###   ########.fr       */
+/*   Updated: 2024/02/16 14:39:32 by tfrily           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@ int main(int argc, char **argv)
 		 	  				(data->map->lines * 40) , "so_long");
     data->step_count = 0;
     data->collec_count = ft_count_elements(data->map->map,'C');
+    data->e_x_pos = 0;
+    data->e_y_pos = 0;
     ft_render(data);
     ft_controls(data);
     mlx_loop(data->mlx);    

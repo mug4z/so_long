@@ -6,15 +6,15 @@
 /*   By: tfrily <tfrily@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 15:32:51 by tfrily            #+#    #+#             */
-/*   Updated: 2024/02/15 15:37:05 by tfrily           ###   ########.fr       */
+/*   Updated: 2024/02/16 10:32:08 by tfrily           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-void ft_quit(t_data *data)
+void ft_quit(t_data *data, char *msg)
 {
-	ft_printf("Bye\n");
+	ft_printf("%s",msg);
 	if (data->map != NULL)
 		ft_clean2dtable(data->map->map);
 	mlx_destroy_image(data->mlx,data->img_grass);

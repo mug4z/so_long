@@ -6,7 +6,7 @@
 /*   By: tfrily <tfrily@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 13:39:45 by tfrily            #+#    #+#             */
-/*   Updated: 2024/02/15 16:55:21 by tfrily           ###   ########.fr       */
+/*   Updated: 2024/02/16 15:58:32 by tfrily           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,13 +71,14 @@ void ft_render_player(t_data *data, void *img)
 		x++;
 	}
 }
-void ft_render_map(t_data *data)
+void ft_render_map(t_data *data, char *nb)
 {
 	ft_render_grass(data);
 	ft_render_item(data,data->img_tree,'1');
 	ft_render_player(data,data->img_character);
 	ft_render_item(data,data->img_collec,'C');
 	ft_render_item(data,data->img_exit,'E');
+	mlx_string_put(data->mlx,data->window,45,10,16,nb);
 }
 
 void *ft_img_to_struct(t_data *data, char *file)

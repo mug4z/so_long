@@ -3,15 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   map_parser_utils.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: tfrily <tfrily@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 16:20:06 by tfrily            #+#    #+#             */
-/*   Updated: 2024/02/14 10:25:00 by marvin           ###   ########.fr       */
+/*   Updated: 2024/02/19 12:56:32 by tfrily           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
-
+/**
+ * @brief Handle the opening of the map.
+ * 
+ * @param data Struct that contain many information about the game.
+ */
 void	ft_opener(t_data *data)
 {
 	if(ft_chkdirectory(data->map_name) == -2)
@@ -28,6 +32,11 @@ void	ft_opener(t_data *data)
 		data->map_fd = open(data->map_name,O_RDONLY);
 }
 
+/**
+ * @brief Remove the new lien character on the line.
+ * 
+ * @param line The line where the new character need to be removed.
+ */
 void ft_remove_new_line(char *line)
 {
 	int len;
@@ -40,6 +49,12 @@ void ft_remove_new_line(char *line)
 	}
 }
 
+/**
+ * @brief Count the number of line the map have.
+ * 
+ * @param data Struct that contain many information about the game.
+ * @return int 
+ */
 int ft_map_line_count(t_data *data)
 {
 	char *res;
@@ -58,6 +73,14 @@ int ft_map_line_count(t_data *data)
 	return (x);
 }
 
+
+/**
+ * @brief Count the number of elements the map have.
+ * 
+ * @param map 
+ * @param element 
+ * @return int 
+ */
 int ft_count_elements(char **map, char element)
 {
 	int x;
@@ -81,11 +104,13 @@ int ft_count_elements(char **map, char element)
 	return (res);
 }
 
-// FlOOD FILL a faire en recursive.
-// LOGIC: Visiter en x+1 x-1 et y+1 y-1
-	// Changer Si une case est differente de 1.
-	// Si eguale a 1 alors return
-
+/**
+ * @brief Floodfill algorithme, to check if the map is impossible or not.
+ * 
+ * @param x 
+ * @param y 
+ * @param map 
+ */
 void ft_floodfill(int x, int y,t_map *map)
 {
 	if ( map->map[x][y] == '1' || (size_t) y >= ft_strlen(map->map[x])

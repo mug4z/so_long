@@ -6,12 +6,18 @@
 /*   By: tfrily <tfrily@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 15:32:51 by tfrily            #+#    #+#             */
-/*   Updated: 2024/02/16 10:32:08 by tfrily           ###   ########.fr       */
+/*   Updated: 2024/02/19 13:03:52 by tfrily           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
+/**
+ * @brief Function to quit the game. It assuers that all the memmory allocated are freed.
+ * 
+ * @param data 
+ * @param msg 
+ */
 void ft_quit(t_data *data, char *msg)
 {
 	ft_printf("%s",msg);

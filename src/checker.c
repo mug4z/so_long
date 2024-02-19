@@ -6,7 +6,7 @@
 /*   By: tfrily <tfrily@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 16:29:01 by tfrily            #+#    #+#             */
-/*   Updated: 2024/02/09 14:41:54 by tfrily           ###   ########.fr       */
+/*   Updated: 2024/02/19 10:43:07 by tfrily           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int ft_chk_map_ext(t_data *data)
 /**
  * @brief Check if the file is a directory
  * 
- * @param path_file 
+ * @param path_file The arguments given by the user.
  * @return int -2 if it is a directory, 0 if it's not a directory
  */
 int	ft_chkdirectory(char *path_file)
@@ -46,9 +46,9 @@ int	ft_chkdirectory(char *path_file)
 }
 
 /**
- * @brief check if the opening of the file is possible in read onlz
+ * @brief check if the opening of the file is possible in read only
  * 
- * @param path_file 
+ * @param path_file The arguments given by the user.
  * @return int  -2 if NOK and 0 if ok
  */
 int ft_chkfdvalid(char *path_file)
@@ -82,9 +82,9 @@ void ft_chk_elements_line(char *line)
 }
 
 /**
- * @brief Checker.
+ * @brief Checker function
  * 
- * @param data 
+ * @param data Struct that contain many information about the game.
  */
 void ft_checker(t_data *data)
 {

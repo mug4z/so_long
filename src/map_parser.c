@@ -6,28 +6,18 @@
 /*   By: tfrily <tfrily@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 16:12:01 by tfrily            #+#    #+#             */
-/*   Updated: 2024/02/15 16:02:12 by tfrily           ###   ########.fr       */
+/*   Updated: 2024/02/19 13:03:16 by tfrily           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-//  La carte comporte des element non valide.
-// - La carte n'est pas rectangulaire.
-// - La carte ne contient pas
-// 	- 1 SORTIE MAX
-// 	- 1 ITEM MIN
-// 	- 1 POSITION DE DÉPART MAX.
-
-// Les elements autorisés
-	// 0 -> sols
-	// 1 -> murs
-	// C -> element a collecter
-	// E -> pour la sortie
-	// P -> position de départ du personnage.
-	
-// Check if map line too long str len on line if not the same size of the first one = ERROR
-
+/**
+ * @brief Fill the map table.
+ * 
+ * @param data Struct that contain many information about the game.
+ * @return t_map* A 2D array.
+ */
 t_map	*ft_filltable(t_data *data)
 {
 	t_map	*map;
@@ -55,6 +45,13 @@ t_map	*ft_filltable(t_data *data)
 	close(data->map_fd);
 	return (map);
 }
+
+/**
+ * @brief Get the player postion on the map.
+ * 
+ * @param data 
+ * @return int* The x y postion of the player.
+ */
 int *ft_P_position(t_data *data)
 {
 	int x;
@@ -83,6 +80,11 @@ int *ft_P_position(t_data *data)
 	return (res);
 }
 
+/**
+ * @brief The parser function, it start the parsing functions for the rest of the programm.
+ * 
+ * @param data 
+ */
 void ft_parser(t_data *data)
 {
 	int *p_position;
@@ -90,7 +92,6 @@ void ft_parser(t_data *data)
 	ft_opener(data);
 	ft_chk_elements(data);
 	data->map =  ft_filltable(data);
-	// FROM THIS POINT WHEN EXIT for ERROR DON'T FORGET TO FREE THE MAP AND THE DATA
 	if (data->map != NULL)
 	{
 		ft_chk_rect(data);

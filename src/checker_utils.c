@@ -6,17 +6,16 @@
 /*   By: tfrily <tfrily@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 15:04:41 by tfrily            #+#    #+#             */
-/*   Updated: 2024/02/16 15:23:01 by tfrily           ###   ########.fr       */
+/*   Updated: 2024/02/19 10:35:57 by tfrily           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
 /**
- * @brief Check that only correct elements are on the map and the map is not empty or file start with \n
+ * @brief  Check that only correct elements are on the map and the map is not empty or file start with \n 
  * 
- * @param fd 
- * @return int 
+ * @param data Struct that contain many information about the game
  */
 void ft_chk_elements(t_data *data)
 {
@@ -46,7 +45,7 @@ void ft_chk_elements(t_data *data)
 /**
  * @brief Check if the map is rectangular
  * 
- * @param data Struct that contain information about the map
+ * @param data Struct that contain many information about the game
  */
 void ft_chk_rect(t_data *data)
 {
@@ -71,7 +70,7 @@ void ft_chk_rect(t_data *data)
 /**
  * @brief Check if the map is well close by walls
  * 
- * @param data 
+ * @param data Struct that contain many information about the game
  */
 void ft_chk_surround_wall(t_data *data)
 {
@@ -102,9 +101,9 @@ void ft_chk_surround_wall(t_data *data)
 }
 
 /**
- * @brief Check if the required elements are 
+ * @brief Check if the minimum required elements are present.
  * 
- * @param data 
+ * @param data Struct that contain many information about the game
  */
 void ft_chk_min_elements(t_data *data)
 {
@@ -125,6 +124,12 @@ void ft_chk_min_elements(t_data *data)
 	}
 }
 
+/**
+ * @brief Check if the map is possible using floodfill algorithme. Begin at the player position.
+ * 
+ * @param p_position Player positions in the map.
+ * @param data Struct that contain many information about the game
+ */
 void ft_chk_map_validity(int p_position[2],t_data *data)
 {
 	ft_floodfill(p_position[0],p_position[1],data->map);

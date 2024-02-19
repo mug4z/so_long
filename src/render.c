@@ -6,17 +6,18 @@
 /*   By: tfrily <tfrily@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 13:39:45 by tfrily            #+#    #+#             */
-/*   Updated: 2024/02/19 10:04:00 by tfrily           ###   ########.fr       */
+/*   Updated: 2024/02/19 13:16:21 by tfrily           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-// render grass -> OK
-// render tree  -> OK
-// render collectible -> OK
-// render exit ->
-// render character -> OK
+
+/**
+ * @brief Render the floor on all the map.
+ * 
+ * @param data Struct that contain many information about the game.
+ */
 void ft_render_grass(t_data *data)
 {
 	int x;
@@ -35,6 +36,13 @@ void ft_render_grass(t_data *data)
 	}
 }
 
+/**
+ * @brief Render the item given in argument
+ * 
+ * @param data Struct that contain many information about the game.
+ * @param img 
+ * @param c The item ex: C for collectible.
+ */
 void ft_render_item(t_data *data, void *img, char c)
 {
 	int x;
@@ -53,24 +61,13 @@ void ft_render_item(t_data *data, void *img, char c)
 		x++;
 	}
 }
-void ft_render_player(t_data *data, void *img)
-{
-	int x;
-	int y;
 
-	x = 0;
-	while(data->map->map[x])
-	{
-		y = 0;
-		while (data->map->map[x][y])
-		{
-			if (data->map->map[x][y] == 'P')
-				mlx_put_image_to_window(data->mlx, data->window,img, y*40-5,x*40-7);
-			y++;
-		}
-		x++;
-	}
-}
+/**
+ * @brief Render all the elements of the map.
+ * 
+ * @param data Struct that contain many information about the game.
+ * @param nb Is the of step the player make.
+ */
 void ft_render_map(t_data *data, char *nb)
 {
 	ft_render_grass(data);
@@ -82,6 +79,13 @@ void ft_render_map(t_data *data, char *nb)
 	free(nb);
 }
 
+/**
+ * @brief Get the img pointer into the data structure.
+ * 
+ * @param data Struct that contain many information about the game.
+ * @param file 
+ * @return void* 
+ */
 void *ft_img_to_struct(t_data *data, char *file)
 {
 	void *img_ptr;
@@ -103,6 +107,11 @@ void *ft_img_to_struct(t_data *data, char *file)
 	return (img_ptr);
 }
 
+/**
+ * @brief Render function that get the images and render the map.
+ * 
+ * @param data 
+ */
 void ft_render(t_data *data)
 {
 	data->img_grass = ft_img_to_struct(data, 

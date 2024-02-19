@@ -6,12 +6,12 @@
 #    By: tfrily <tfrily@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/06 14:51:20 by tfrily            #+#    #+#              #
-#    Updated: 2024/02/15 16:36:56 by tfrily           ###   ########.fr        #
+#    Updated: 2024/02/19 13:06:17 by tfrily           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SRC = src/main.c src/checker.c src/errors.c src/errors_utils.c src/map_parser.c  src/map_parser_utils.c \
-	  src/checker_utils.c src/error_utils1.c src/render.c src/controls.c src/controls_utils.c src/quit.c 
+	  src/checker_utils.c src/error_utils1.c src/render.c src/render_utils.c src/controls.c src/controls_utils.c src/quit.c 
 OBJ = $(patsubst %.c,%.o,$(SRC))
 
 NAME = so_long

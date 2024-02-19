@@ -6,7 +6,7 @@
 /*   By: tfrily <tfrily@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 14:53:55 by tfrily            #+#    #+#             */
-/*   Updated: 2024/02/19 15:32:17 by tfrily           ###   ########.fr       */
+/*   Updated: 2024/02/19 15:39:00 by tfrily           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,7 @@ void	ft_err_player(t_data *data);
 // Renders
 void	ft_render(t_data *data);
 void	ft_render_map(t_data *data, char *nb);
+void	ft_render_player(t_data *data, void *img);
 
 // Controls
 int		ft_keypress(int keycode, t_data *data);

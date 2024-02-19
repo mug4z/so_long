@@ -6,14 +6,15 @@
 /*   By: tfrily <tfrily@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 14:53:33 by tfrily            #+#    #+#             */
-/*   Updated: 2024/02/19 10:32:00 by tfrily           ###   ########.fr       */
+/*   Updated: 2024/02/19 13:23:25 by tfrily           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
 /**
- * @brief Main function for the so_long game. Faile directly if the arguments are not equal to two.
+ * @brief Main function for the so_long game. 
+ *        Failed directly if the arguments are not equal to two.
  * 
  * @param argc  The number of arguments
  * @param argv  The arguments
@@ -47,4 +48,3 @@ int	main(int argc, char **argv)
 	mlx_loop(data->mlx);
 	return (0);
 }
-

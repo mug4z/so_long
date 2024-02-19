@@ -87,18 +87,18 @@ int	ft_process_left_right(t_data *data, int y)
  */
 int	ft_keypress(int keycode, t_data *data)
 {
-	if (keycode == l_esc)
+	if (keycode == L_ESC)
 	{
 		mlx_destroy_window(data->mlx, data->window);
 		ft_quit(data, "Bye\n");
 	}
-	if (keycode == l_w)
+	if (keycode == L_W)
 		ft_process_up_down(data, -1);
-	if (keycode == l_a)
+	if (keycode == L_A)
 		ft_process_left_right(data, -1);
-	if (keycode == l_s)
+	if (keycode == L_S)
 		ft_process_up_down(data, 1);
-	if (keycode == l_d)
+	if (keycode == L_D)
 		ft_process_left_right(data, 1);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: tfrily <tfrily@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 16:34:17 by tfrily            #+#    #+#             */
-/*   Updated: 2024/02/19 11:40:22 by tfrily           ###   ########.fr       */
+/*   Updated: 2024/02/19 13:22:12 by tfrily           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,3 +70,4 @@ void ft_move(t_data *data, int nb, int direction)
     
     ft_render_map(data,ft_itoa(data->step_count));
 }
+// ft_printf("Movement : %d",data->step_count):

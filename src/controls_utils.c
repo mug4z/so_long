@@ -6,7 +6,7 @@
 /*   By: tfrily <tfrily@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 16:34:17 by tfrily            #+#    #+#             */
-/*   Updated: 2024/02/16 16:00:42 by tfrily           ###   ########.fr       */
+/*   Updated: 2024/02/19 10:03:14 by tfrily           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void ft_move_from_exit(t_data *data, int nb, int direction)
         data->step_count++;
     }
     ft_printf("Number of movement %d\n",data->step_count);
-    ft_render_map(data);
+    ft_render_map(data,ft_itoa(data->step_count));
     
 }
 
@@ -55,5 +55,5 @@ void ft_move(t_data *data, int nb, int direction)
         data->step_count++;
     }
     ft_printf("Number of movement %d\n",data->step_count);
-    ft_render_map(data);
+    ft_render_map(data,ft_itoa(data->step_count));
 }

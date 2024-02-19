@@ -6,7 +6,7 @@
 /*   By: tfrily <tfrily@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 16:20:06 by tfrily            #+#    #+#             */
-/*   Updated: 2024/02/19 12:56:32 by tfrily           ###   ########.fr       */
+/*   Updated: 2024/02/19 14:53:03 by tfrily           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
  */
 void	ft_opener(t_data *data)
 {
-	if(ft_chkdirectory(data->map_name) == -2)
+	if (ft_chkdirectory(data->map_name) == -2)
 	{
 		ft_err_directory(data);
 		exit(1);
@@ -29,7 +29,7 @@ void	ft_opener(t_data *data)
 		exit(1);
 	}
 	else
-		data->map_fd = open(data->map_name,O_RDONLY);
+		data->map_fd = open(data->map_name, O_RDONLY);
 }
 
 /**
@@ -37,15 +37,15 @@ void	ft_opener(t_data *data)
  * 
  * @param line The line where the new character need to be removed.
  */
-void ft_remove_new_line(char *line)
+void	ft_remove_new_line(char *line)
 {
-	int len;
+	int	len;
 
-	if(line != NULL)
+	if (line != NULL)
 	{
 		len = ft_strlen(line);
-		if (line[len-1] == '\n')
-			line[len-1] = '\0';
+		if (line[len - 1] == '\n')
+			line[len - 1] = '\0';
 	}
 }
 
@@ -55,15 +55,15 @@ void ft_remove_new_line(char *line)
  * @param data Struct that contain many information about the game.
  * @return int 
  */
-int ft_map_line_count(t_data *data)
+int	ft_map_line_count(t_data *data)
 {
-	char *res;
-	int  x;
+	char	*res;
+	int		x;
 
 	x = 0;
 	ft_opener(data);
 	res = get_next_line(data->map_fd);
-	while(res != NULL)
+	while (res != NULL)
 	{
 		ft_clean(res);
 		x++;
@@ -73,7 +73,6 @@ int ft_map_line_count(t_data *data)
 	return (x);
 }
 
-
 /**
  * @brief Count the number of elements the map have.
  * 
@@ -81,21 +80,21 @@ int ft_map_line_count(t_data *data)
  * @param element 
  * @return int 
  */
-int ft_count_elements(char **map, char element)
+int	ft_count_elements(char **map, char element)
 {
-	int x;
-	int y;
-	int res;
+	int	x;
+	int	y;
+	int	res;
 
 	x = 0;
 	y = 0;
 	res = 0;
-	while(map[x])
+	while (map[x])
 	{
 		y = 0;
-		while(map[x][y])
+		while (map[x][y])
 		{
-			if(map[x][y] == element)
+			if (map[x][y] == element)
 				res++;
 			y++;
 		}
@@ -111,14 +110,14 @@ int ft_count_elements(char **map, char element)
  * @param y 
  * @param map 
  */
-void ft_floodfill(int x, int y,t_map *map)
+void	ft_floodfill(int x, int y, t_map *map)
 {
-	if ( map->map[x][y] == '1' || (size_t) y >= ft_strlen(map->map[x])
-		|| y < 0 || x < 0 || x >= map->lines)
+	if (map->map[x][y] == '1' || (size_t) y >= ft_strlen(map->map[x])
+			|| y < 0 || x < 0 || x >= map->lines)
 		return ;
 	map->map[x][y] = '1';
-	ft_floodfill(x,y + 1,map);
-	ft_floodfill(x,y - 1,map);
-	ft_floodfill(x + 1,y,map);
-	ft_floodfill(x - 1,y,map);
+	ft_floodfill(x, y + 1, map);
+	ft_floodfill(x, y - 1, map);
+	ft_floodfill(x + 1, y, map);
+	ft_floodfill(x - 1, y, map);
 }
